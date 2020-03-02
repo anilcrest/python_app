@@ -6,9 +6,9 @@ class MyTestCase(unittest.TestCase):
         greeter = Greeter()
         self.assertEqual(greeter.message, 'Hello world!')
         
-    # def test_default_greeting_fail(self):
-    #     greeter = Greeter()
-    #     self.assertEqual(greeter.message, 'Hello !')
+    def test_default_greeting_fail(self):
+        greeter = Greeter()
+        self.assertEqual(greeter.message, 'Hello !')
 
 if __name__ == '__main__':
     unittest.main()
