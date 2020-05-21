@@ -42,4 +42,4 @@ jobs:
           command: |
             go get github.com/tcnksm/ghr
             echo "my artifact files in a dir" > artifact3;
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v0.1.1 artifact3
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} TAG v0.1.1 artifact3
