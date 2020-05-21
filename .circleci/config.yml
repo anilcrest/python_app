@@ -40,6 +40,7 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
+            git tag v0.1.1
             go get github.com/tcnksm/ghr
             echo "my artifact files in a dir" > artifact3;
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} TAG v0.1.1 artifact3
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} artifact3
