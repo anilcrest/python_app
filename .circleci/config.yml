@@ -7,8 +7,6 @@ jobs:
       - checkout
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-      - attach_workspace:
-          at: ./artifacts
       - run:
           command: |
             python3 -m venv venv
