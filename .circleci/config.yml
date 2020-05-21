@@ -39,6 +39,8 @@ jobs:
             - artifact-file
       - run:
           name: "Publish Release on GitHub"
+          tags:
+              only: /^v\d*\.\d*\.\d*.*$/
           command: |
             go get github.com/tcnksm/ghr
             echo "my artifact files in a dir" > artifact3;
