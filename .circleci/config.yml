@@ -1,5 +1,5 @@
-version: 2.1
-jobs: 
+version: 2
+jobs:
   build:
     docker:
       - image: circleci/golang:1.10
@@ -43,25 +43,3 @@ jobs:
             go get github.com/tcnksm/ghr
             echo "my artifact files in a dir" > artifact3;
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v0.1.1 artifact3
-  publish-gh:
-    docker:
-      - image: circleci/golang:1.10
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - run:
-          name: "Publish Release on GitHub"
-          command: |
-            go get github.com/tcnksm/ghr
-            echo "my artifact files in a dir" > artifact3;
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} v0.1.1 artifact3
-    
-workflows:
-  publish:
-    jobs:
-      - publish-gh:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*.*$/
