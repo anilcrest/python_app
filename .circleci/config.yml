@@ -27,10 +27,16 @@ jobs:
             echo "my artifact file" > artifact-1;
             mkdir artifacts;
             echo "my artifact files in a dir" > artifacts/artifact-2;
-
       - store_artifacts:
           path: artifact-1
           destination: artifact-file
 
       - store_artifacts:
           path: artifacts
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$(my-binary --version)
+            mkdir artifacts;
+            echo "my artifact files in a dir" > artifacts/artifact-2;
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} artifacts
